@@ -7,6 +7,7 @@ import { Keg } from './keg.model';
   inputs: ["kegList"],
   template: `
     <keg-display *ngFor="#keg of kegList">{{ keg.name }}
+    <br>
     </keg-display>
   `
 })
