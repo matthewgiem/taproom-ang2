@@ -2,13 +2,16 @@ import { Component } from 'angular2/core';
 import { AppComponent } from './app.component';
 import { Keg } from './keg.model';
 import { NewKegComponent } from './new-keg.component';
+import { EditKegDetailsComponent } from './edit-keg-details.component';
 
 @Component({
   selector: "keg-list",
   inputs: ["kegList"],
   directives: [NewKegComponent],
   template: `
-    <keg-display *ngFor="#keg of kegList"><div [style.color]="getStyle(keg)">Name of Keg: {{ keg.name }}</div><br> Alcohol Content: {{ keg.alcohol }}, Brewery: {{ keg.brand }}, Price of a Pint {{ keg.price }}, {{ keg.pints }} pints left <button (click)="sellPint(keg)">sell 1 pint</button>
+    <keg-display *ngFor="#keg of kegList"><div [style.color]="getStyle(keg)">Name of Keg: {{ keg.name }}</div><br><div>Alcohol Content: {{ keg.alcohol }}, Brewery: {{ keg.brand }}, Price of a Pint {{ keg.price }}, {{ keg.pints }} pints left</div><br><button (click)="sellPint(keg)">sell 1 pint</button>
+    <button (click)="addKeg(keg)">add keg</button><button (click)="sellKeg(keg)">sell keg</button>
+    <hr>
     <br>
     </keg-display>
     <new-keg (onSubmitNewKeg)="addKegToList($event)"></new-keg>
@@ -33,10 +36,20 @@ export class KegListComponent {
     }
   }
   getStyle(keg: Keg)  {
-    if(keg.pints < 10){
+    if(keg.pints <= 10){
       return "blue"
     } else {
       return "";
+    }
+  }
+  addKeg(keg: Keg)  {
+    keg.pints +=124;
+  }
+  sellKeg(keg: Keg) {
+    if(keg.pints >=124) {
+      keg.pints -= 124;
+    } else  {
+      alert("you've already opened your last keg and can't return it");
     }
   }
 }
