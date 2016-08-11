@@ -8,7 +8,7 @@ import { NewKegComponent } from './new-keg.component';
   inputs: ["kegList"],
   directives: [NewKegComponent],
   template: `
-    <keg-display *ngFor="#keg of kegList">Name of Keg: {{ keg.name }}, Alcohol Content: {{ keg.alcohol }}, Brewery: {{ keg.brand }}, Price of a Pint {{ keg.price }}
+    <keg-display *ngFor="#keg of kegList">Name of Keg: {{ keg.name }}, Alcohol Content: {{ keg.alcohol }}, Brewery: {{ keg.brand }}, Price of a Pint {{ keg.price }}, {{ keg.pints }} pints left
     <br>
     </keg-display>
     <new-keg (onSubmitNewKeg)="addKegToList($event)"></new-keg>

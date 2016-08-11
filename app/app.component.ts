@@ -16,8 +16,8 @@ export class AppComponent {
   public kegs: Keg[];
   constructor(){
     this.kegs = [
-      new Keg(0.12, "Whiskey", 1425, "Jameson"),
-      new Keg(0.08, "Beer", 425, "Sessions")
+      new Keg(0.12, "Whiskey", 1425, "Jameson", 124),
+      new Keg(0.08, "Beer", 425, "Sessions", 124)
     ];
   }
 }
